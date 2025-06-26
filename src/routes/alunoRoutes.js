@@ -6,7 +6,7 @@ const { postAluno } = require("../controllers/alunoController");
 
 router.post("/", autenticar, postAluno);
 router.get("/", autenticar, getTodos);
-router.get("/:id", autenticar, getPorId);
 router.get("/medias", autenticar, getMedias);
+router.get("/:id", autenticar, getPorId);
 
 module.exports = router;
