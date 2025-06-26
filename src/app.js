@@ -1,13 +1,10 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+import express from "express";
+import userRoutes  from "./routes/userRoutes.js";
+import alunoRoutes from "./routes/alunoRoutes.js";
 const app = express();
 
-const userRoutes = require("./routes/userRoutes");
-const alunoRoutes = require("./routes/alunoRoutes");
+app.use(express.json());
+app.use("/", userRoutes);        
+app.use("/alunos", alunoRoutes); 
 
-app.use(bodyParser.json());
-
-app.use("/", userRoutes);         // POST /register, POST /login
-app.use("/alunos", alunoRoutes); // GET /alunos, /alunos/:id, /alunos/medias/todos
-
-app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+export default app;

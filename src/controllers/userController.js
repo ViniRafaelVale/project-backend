@@ -1,6 +1,8 @@
-const jwt = require("jsonwebtoken");
-const { usuarios } = require("../models/storage");
-const { secret } = require("../config/auth");
+import  jwt from "jsonwebtoken";
+import storage from "../models/storage.js";
+import secret from "../config/secret.js";
+
+const usuarios = storage.usuarios;
 
 const register = (req, res) => {
   const { username, password } = req.body;
@@ -20,4 +22,4 @@ const login = (req, res) => {
   res.json({ token });
 };
 
-module.exports = { register, login };
+export default{register,login};

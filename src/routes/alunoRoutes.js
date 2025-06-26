@@ -1,12 +1,15 @@
-const express = require("express");
+
+import express from "express";
+import alunoController from "../controllers/alunoController.js";
+import autenticar from "../middlewares/auth.js";
 const router = express.Router();
-const { getTodos, getPorId, getMedias } = require("../controllers/alunoController");
-const autenticar = require("../middlewares/auth");
-const { postAluno } = require("../controllers/alunoController");
 
-router.post("/", autenticar, postAluno);
-router.get("/", autenticar, getTodos);
-router.get("/medias", autenticar, getMedias);
-router.get("/:id", autenticar, getPorId);
+router.post("/", autenticar,alunoController.postAluno);
+router.get("/", autenticar, alunoController.getTodos);
+router.get("/medias", autenticar,alunoController.getMedias);
+router.get("/aprovados", autenticar, alunoController.getAprovados);
+router.get("/:id", autenticar, alunoController.getPorId);
+router.put("/:id", autenticar, alunoController.putAluno);
+router.delete("/:id", autenticar, alunoController.deleteAluno);
 
-module.exports = router;
+export default router;
